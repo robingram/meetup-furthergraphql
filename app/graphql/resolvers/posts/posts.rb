@@ -6,7 +6,7 @@ module Resolvers
       type [Types::Posts::Post]
 
       def resolve
-        Post.all
+        ::Post.all
       end
     end
   end
