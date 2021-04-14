@@ -1,6 +1,6 @@
 module Types
   module Posts
-    class Post < GraphQL::Schema::Object
+    class Post < Types::BaseObject
       graphql_name "Post"
       description "A blog article"
 

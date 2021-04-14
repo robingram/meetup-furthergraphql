@@ -1,6 +1,6 @@
 module Types
   module Comments
-    class Comment < GraphQL::Schema::Object
+    class Comment < Types::BaseObject
       graphql_name "Comment"
       description "A comment on a Post"
 
