@@ -20,7 +20,7 @@ module Types
     end
 
     # Function class (deprecated)
-    field :region, function: FindRecord.new
+    field :region, function: FindPost.new
 
     # Resolver class
     field :post, resolver: Resolvers::Posts::Post
