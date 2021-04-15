@@ -1,5 +1,6 @@
 
 module Types
+  # Base type for all queries
   class QueryType < Types::BaseObject
 
     # Inline function with same name as field
@@ -18,28 +19,23 @@ module Types
       }
     end
 
-    # Function class
-    field :region, function: FindRecord.new(model_class: Region, type: Types::RegionType)
+    # Function class (deprecated)
+    field :region, function: FindRecord.new
 
     # Resolver class
     field :post, resolver: Resolvers::Posts::Post
 end
 
-class FindRecord < GraphQL::Function
-  attr_reader :type
-
-  def initialize(model_class:, type:)
-      @model_class = model_class
-      @type = type
-  end
-
+app/graphql/functions/posts/find_post.rb
+class FindPost < GraphQL::Function
   argument :id, !GraphQL::ID_TYPE
 
   def call(obj, args, ctx)
-      @model_class.find(args[:id])
+      Post.find(args[:id])
   end
 end
 
+# app/graphql/resolvers/posts/posts.rb
 module Resolvers
   module Posts
     class Posts < Resolvers::BaseResolver
